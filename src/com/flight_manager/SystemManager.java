@@ -9,35 +9,33 @@ public class SystemManager {
 	private List<Airline> listOfAirlines;
 
 	/*
-	 * 1. Aerodrom mora imati ime koje se sastoji od točno tri abecedna znaka.
+	 * 1. Aerodrom mora imati ime koje se sastoji od tacno tri abecedna znaka.
 	 * Nijedna dva aerodroma ne mogu imati isto ime. 2. Avio kompanija ima ime koje
-	 * mora imati manje od 6 slova. Nijedna aviokompanija ne može imati isto ime. 3.
-	 * Svaki let se sastoji od sedišta organizovanih u redove. Svaki red je označen
-	 * sa ("A", "B", "C", "D", "E", "F"). Svaki red ima broj sedišta u redu. 4.
-	 * Svaki let ima aerodrom, odredište avio kompanije i sjedišta.     Korisnik
-	 * može:   -Create airport   -Izradite aviokompaniju   - Kreiraj let   -
-	 * Rezervišite mjesto na letu
+	 * mora imati manje od 6 slova. Nijedna aviokompanija ne moze imati isto ime. 3.
+	 * Svaki let se sastoji od sedista organizovanih u redove. Svaki red je oznacen
+	 * sa ("A", "B", "C", "D", "E", "F"). Svaki red ima broj sedista u redu. 4.
+	 * Svaki let ima aerodrom, odrediste avio kompanije i sjedista. Korisnik moze
+	 * -Create airport -Izradite aviokompaniju - Kreiraj let - Rezervisite mjesto na
+	 * letu
 	 */
 
 	public Airport createAirport(String name) {
-		
-		boolean tacnoIme;
-		
+
+		boolean tacnoIme = true;
+		boolean dupliA = true;
+
 		if (name.length() != 3) {
-				tacnoIme = false;
-				
-			}
-		
-		
+			tacnoIme = false;
+
+		}
+
 		for (int i = 0; i < name.length(); i++) {
-			
-			
-			
-			if  (name.charAt(i) < 'A' && 'Z' < name.charAt(i)) {
-				
+
+			if (name.charAt(i) < 'A' && 'Z' < name.charAt(i)) {
+
 				tacnoIme = false;
 			}
-			
+
 		}
 
 		return null;
