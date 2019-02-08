@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.flight_manager.Airline;
 import com.flight_manager.Airport;
 import com.flight_manager.SystemManager;
 
@@ -44,6 +45,12 @@ public class SystemManagerTest {
 	}
 
 	@Test
+	public void ispravnoImeAirportVracaNotNullTest() {
+
+		assertNotNull(manager.createAirport("ABC"));
+	}
+
+	@Test
 	public void ispravnostKaaraketraVracaFalseTest() {
 
 		name = "abc";
@@ -59,5 +66,31 @@ public class SystemManagerTest {
 		}
 		assertFalse(ispravno);
 
+	}
+
+	@Test
+	public void duzinaImenaAirlineVracaNullAkoNijeIspravneDuzineTest() {
+
+		assertNull(manager.createAirline("asdfghj"));
+	}
+
+	@Test
+	public void duzinaImenaAirlineVracaNotNullAkoJeIspravneDuzineTest() {
+
+		assertNotNull(manager.createAirline("abcd"));
+	}
+
+	@Test
+	public void provjeraDaLiSeVecImeNalaziUBaziVracaNullAkoImaTest() {
+
+		ArrayList<Airline> airlineL = new ArrayList<Airline>();
+		Airline airline = new Airline("asdf");
+		airlineL.add(airline);
+		boolean ispravno = true;
+		if (airlineL.get(0).getName().equals("asdf")) {
+
+			ispravno = false;
+		}
+		assertFalse(ispravno);
 	}
 }
