@@ -5,24 +5,25 @@ import java.util.List;
 
 public class SystemManager {
 
+	/*
+	 * lista koa prikuplja i cuva podatke Airporta
+	 */
 	private ArrayList<Airport> listOfAirports = new ArrayList<>();
+	
+	/*
+	 * lista koja prikuplja i cuva podatke od Flights
+	 */
 	private List<Flight> listOfFlights = new ArrayList<Flight>();
+	
+	/*
+	 * lista koja prikuplja i cuva podatke od Airlines
+	 */
 	private List<Airline> listOfAirlines = new ArrayList<>();
 
-	/*
-	 * 1. Aerodrom mora imati ime koje se sastoji od točno tri abecedna znaka.
-	 * Nijedna dva aerodroma ne mogu imati isto ime. 2. Avio kompanija ima ime koje
-	 * mora imati manje od 6 slova. Nijedna aviokompanija ne može imati isto ime. 3.
-	 * Svaki let se sastoji od sedišta organizovanih u redove. Svaki red je označen
-	 * sa ("A", "B", "C", "D", "E", "F"). Svaki red ima broj sedišta u redu. 4.
-	 * Svaki let ima aerodrom, odredište avio kompanije i sjedišta.     Korisnik
-	 * može:   -Create airport   -Izradite aviokompaniju   - Kreiraj let   -
-	 * Rezervišite mjesto na letu
-	 */
 
 	/*
 	 * @ metoda koja prima ime i kreira airport sa tim imenom ako su ispunjeni
-	 * uslovi za to
+	 * uslovi za to: ime mora imati 3 velilka abecedna slova i ime nesmije biti isto
 	 */
 
 	public Airport createAirport(String name) {
@@ -65,7 +66,8 @@ public class SystemManager {
 	}
 
 	/*
-	 * Metoda koja prima ime i kreira airline sa tim imenom ako su uslovi ispunjeni
+	 * Metoda koja prima ime i kreira airline sa tim imenom ako su uslovi ispunjeni:
+	 * ime nesmije biti duzze od 6 slovva i nesmije biti 2 ista imena
 	 */
 	public Airline createAirline(String name) {
 

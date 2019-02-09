@@ -12,6 +12,9 @@ public class TestFlightManager {
 
 		int opcija = 1;
 
+		/*
+		 * while petlja koja vrti program dok se ne unese 0 kako bi zavrsio program
+		 */
 		while (opcija != 0) {
 
 			System.out.println("1.create airprt");
@@ -28,18 +31,27 @@ public class TestFlightManager {
 				opcija = unos.nextInt();
 			}
 
+			/*
+			 * kreirannje airporta
+			 */
 			if (opcija == 1) {
 				System.out.println("unesi ime");
 				String ime = unos.next();
 				m.createAirport(ime);
 			}
 
+			/*
+			 * kreiranje airlines
+			 */
 			if (opcija == 2) {
 				System.out.println("unesite ime");
 				String ime = unos.next();
 				m.createAirline(ime);
 			}
 
+			/*
+			 * kreiranjee flights
+			 */
 			if (opcija == 3) {
 				System.out.println("unesite");
 			}
