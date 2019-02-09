@@ -53,7 +53,15 @@ public class TestFlightManager {
 			 * kreiranjee flights
 			 */
 			if (opcija == 3) {
-				System.out.println("unesite");
+				System.out.println("unesite ime aerodroma");
+				String ime = unos.next();
+				System.out.println("unesite let");
+				String let = unos.next();
+				System.out.println("unesite destinaaciju");
+				String dest = unos.next();
+				System.out.println("unesite ID");
+				Integer id = unos.nextInt();
+				m.createFlight(ime, let, dest, id);
 			}
 		}
 

@@ -92,9 +92,22 @@ public class SystemManager {
 	 * Metoda koja prima ime airporta zatim ime airline, odrediste putovanja i id
 	 * broj da bi kreirao let ako su uslovi ispunjeeni
 	 */
-	public Flight createFlight(String name, String origin, String destination, Integer id) {
+	public Flight createFlight(Airport name,String seat, String origin, String destination, Integer id, Integer row) {
 		// TODO implement
-		return null;
+		
+		for (int i = 0; i < listOfFlights.size(); i++) {
+			if (id.equals(listOfFlights.get(i).getId()))
+				return null;
+		}
+		
+		
+			Flight flig = new Flight(name, origin, destination, id);
+			listOfFlights.add(flig);
+			createSeats(seat, id, row);
+			return flig;
+		
+
+		
 	}
 
 	/*
@@ -102,6 +115,19 @@ public class SystemManager {
 	 */
 	public void createSeats(String airline, Integer flightID, Integer numberOfSeatsPerRow) {
 		// TODO implement
+		
+		String rows = "ABCDEF";
+		ArrayList<Seat> seats = new ArrayList<Seat>();
+		
+		Seat seat = new Seat();
+		for (int i = 1; i <= rows.length(); i++) {
+		    for (int j = 0; j < numberOfSeatsPerRow; j++) {
+			
+		    seat = new Seat(rows, numberOfSeatsPerRow);
+		    seats.add(seat);
+		    }
+		}
+
 	}
 
 	/*

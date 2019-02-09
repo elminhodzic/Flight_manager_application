@@ -10,6 +10,17 @@ public class Seat {
 	//is it booked, or it is available
 	private boolean available;
 	
+	/**
+	 * @param row
+	 * @param seatNumber
+	 * @param available
+	 */
+	public Seat(String row, Integer seatNumber) {
+		this.row = row;
+		this.seatNumber = seatNumber;
+		this.available = available;
+	}
+
 	public Seat() {
 		
 	}

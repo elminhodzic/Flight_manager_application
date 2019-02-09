@@ -21,6 +21,38 @@ public class Flight {
 	//city where the flight is going
 	private String destination;
 	
+	/**
+	 * @param id
+	 * @param airline
+	 * @param airport
+	 * @param seats
+	 * @param origin
+	 * @param destination
+	 */
+	public Flight(Integer id, Airline airline, Airport airport, ArrayList<Seat> seats, String origin,
+			String destination) {
+		this.id = id;
+		this.airline = airline;
+		this.airport = airport;
+		this.seats = seats;
+		this.origin = origin;
+		this.destination = destination;
+	}
+
+	/**
+	 * @param id
+	 * @param airport
+	 * @param seats
+	 * @param origin
+	 * @param destination
+	 */
+	public Flight(Airport airport, String origin, String destination, Integer id) {
+		this.id = id;
+		this.airport = airport;
+		this.origin = origin;
+		this.destination = destination;
+	}
+
 	public Flight() {
 		
 	}
