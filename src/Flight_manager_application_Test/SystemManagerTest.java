@@ -13,84 +13,62 @@ import com.flight_manager.SystemManager;
 
 public class SystemManagerTest {
 
-	SystemManager manager = new SystemManager();
-	String name;
-	ArrayList<Airport> listaA = new ArrayList<>();
+	SystemManager manager;
 	Airport airport;
+	Airline airline;
+	ArrayList<Airport> listaAirport = new ArrayList<>();
 
 	@Before
 	public void setUp() {
 
-		// String name;
 		manager = new SystemManager();
-		airport = new Airport("ABC");
-		listaA.add(airport);
+		manager.vratiListaAirporta().add(new Airport("ABC"));
+		manager.vratiListaAirline().add(new Airline("abcde"));
+		// listaAirport.add(new Airport("ABC"));
+
+	}
+/*
+ * Airport Testovi
+ */
+	@Test
+	public void shouldReturnFalseIfNameExistInListTest() {
+
+		assertFalse(manager.provjeraDuplikataImenaAirporta("ABC"));
 	}
 
 	@Test
-	public void duuzinaImenaVracaFalsTest() {
+	public void shouldReturnTrueIfNameIsDiferetFromListTest() {
 
-		name = "abcd";
-		manager.createAirport(name);
-		assertNotEquals(3, name.length());
-
+		assertTrue(manager.provjeraDuplikataImenaAirporta("ABD"));
 	}
-
+	
 	@Test
-	public void duzinaImenaVracaTrueTest() {
-
-		name = "abc";
-		manager.createAirport(name);
-		assertEquals(3, name.length());
+	public void shouldReturnNotNullIfAirportIsCreatedTest () {
+		
+		assertNotNull(manager.createAirport("BCD"));
 	}
-
+	
 	@Test
-	public void ispravnoImeAirportVracaNotNullTest() {
-
-		assertNotNull(manager.createAirport("ABC"));
+	public void shouldReturnNullIfAirportIsNotCreatedSameNameInListTest () {
+		
+		assertNull(manager.createAirport("ABC"));
 	}
-
+	
 	@Test
-	public void ispravnostKaaraketraVracaFalseTest() {
-
-		name = "abc";
-
-		manager.createAirport(name);
-		boolean ispravno = true;
-		for (int i = 0; i < name.length(); i++) {
-
-			if (name.charAt(i) < 'A' || 'Z' < name.charAt(i)) {
-
-				ispravno = false;
-			}
-		}
-		assertFalse(ispravno);
-
+	public void shouldReturnNullIfSizeOfNameIsIncorectInCreatingAirportTest () {
+		
+		assertNull(manager.createAirport("ABCD"));
 	}
-
+	
 	@Test
-	public void duzinaImenaAirlineVracaNullAkoNijeIspravneDuzineTest() {
-
-		assertNull(manager.createAirline("asdfghj"));
+	public void shouldReturnNullIfAirportIsNotCreatedAplhabeticProblemTest () {
+		
+		assertNull(manager.createAirport("abc"));
 	}
-
-	@Test
-	public void duzinaImenaAirlineVracaNotNullAkoJeIspravneDuzineTest() {
-
-		assertNotNull(manager.createAirline("abcd"));
-	}
-
-	@Test
-	public void provjeraDaLiSeVecImeNalaziUBaziVracaNullAkoImaTest() {
-
-		ArrayList<Airline> airlineL = new ArrayList<Airline>();
-		Airline airline = new Airline("asdf");
-		airlineL.add(airline);
-		boolean ispravno = true;
-		if (airlineL.get(0).getName().equals("asdf")) {
-
-			ispravno = false;
-		}
-		assertFalse(ispravno);
-	}
+	
+	/*
+	 * Airline Testoovi
+	 */
+	
+	
 }

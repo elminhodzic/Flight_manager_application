@@ -61,7 +61,7 @@ public class TestFlightManager {
 				String dest = unos.next();
 				System.out.println("unesite ID");
 				Integer id = unos.nextInt();
-				m.createFlight(ime, let, dest, id);
+				//m.createFlight(ime, let, dest, id);
 			}
 		}
 

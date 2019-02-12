@@ -38,6 +38,24 @@ public class Airport {
 		return "Airport [name=" + name + "]";
 	}
 	
-	
+	public boolean ispravnostDuzineImena (String name) {
+		
+		if (name.length() != 3) {
+			return false;
+		}	
+		return true;
+	}
 
+	public boolean ispravnostKarakteraImena (String name) {
+		
+		for (int i = 0; i < name.length(); i++) {
+			
+			if (name.charAt(i) < 'A' || 'Z' < name.charAt(i)) {
+
+				System.out.println("greska samo veliki karakteri od A do Z");
+				return false;
+			}
+		}
+		return true;	
+	}
 }

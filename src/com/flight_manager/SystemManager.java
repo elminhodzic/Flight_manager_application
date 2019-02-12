@@ -9,65 +9,49 @@ public class SystemManager {
 	 * lista koa prikuplja i cuva podatke Airporta
 	 */
 	private ArrayList<Airport> listOfAirports = new ArrayList<>();
-	
+
 	/*
 	 * lista koja prikuplja i cuva podatke od Flights
 	 */
-	private List<Flight> listOfFlights = new ArrayList<Flight>();
-	
+	private ArrayList<Flight> listOfFlights = new ArrayList<Flight>();
+
 	/*
 	 * lista koja prikuplja i cuva podatke od Airlines
 	 */
-	private List<Airline> listOfAirlines = new ArrayList<>();
+	private ArrayList<Airline> listOfAirlines = new ArrayList<>();
 
+	Airport airport = new Airport();
 
 	/*
 	 * @ metoda koja prima ime i kreira airport sa tim imenom ako su ispunjeni
 	 * uslovi za to: ime mora imati 3 velilka abecedna slova i ime nesmije biti isto
 	 */
 
-	public Airport createAirport(String name) {
+	public ArrayList<Airport> vratiListaAirporta() {
 
-		boolean duzinaImena = true;
-		boolean tacnoIme = true;
-		boolean razlicitoIme = true;
-
-		if (name.length() != 3) {
-
-			System.out.println("ime airporta mora biti duzine 3 karaktera");
-			duzinaImena = false;
-			return null;
-		}
-
-		for (int i = 0; i < name.length(); i++) {
-
-			if (name.charAt(i) < 'A' || 'Z' < name.charAt(i)) {
-
-				System.out.println("greska samo veliki karakteri od A do Z");
-				tacnoIme = false;
-				return null;
-			}
-		}
-
-		for (int i = 0; i < listOfAirports.size(); i++) {
-
-			if (listOfAirports.get(i).getName().equals(name)) {
-
-				System.out.println("ime se vec nalazi u bazi");
-				razlicitoIme = false;
-				return null;
-			}
-		}
-
-		Airport airport = new Airport(name);
-		listOfAirports.add(airport);
-		return airport;
-
+		return listOfAirports;
+	}
+	
+	public ArrayList<Airline> vratiListaAirline (){
+		
+		return listOfAirlines;
 	}
 
+	public Airport createAirport(String name) {
+
+		if (airport.ispravnostDuzineImena(name) && airport.ispravnostKarakteraImena(name)
+				&& provjeraDuplikataImenaAirporta(name)) {
+
+			airport = new Airport(name);
+			listOfAirports.add(airport);
+			return airport;
+		}
+		return null;
+	}
+	
 	/*
 	 * Metoda koja prima ime i kreira airline sa tim imenom ako su uslovi ispunjeni:
-	 * ime nesmije biti duzze od 6 slovva i nesmije biti 2 ista imena
+	 * ime nesmije biti duzze od 6 slovva i ako se ime vec nalazi u baazi nece ga kreirati
 	 */
 	public Airline createAirline(String name) {
 
@@ -92,22 +76,19 @@ public class SystemManager {
 	 * Metoda koja prima ime airporta zatim ime airline, odrediste putovanja i id
 	 * broj da bi kreirao let ako su uslovi ispunjeeni
 	 */
-	public Flight createFlight(Airport name,String seat, String origin, String destination, Integer id, Integer row) {
+	public Flight createFlight(Airport name, String seat, String origin, String destination, Integer id, Integer row) {
 		// TODO implement
-		
+
 		for (int i = 0; i < listOfFlights.size(); i++) {
 			if (id.equals(listOfFlights.get(i).getId()))
 				return null;
 		}
-		
-		
-			Flight flig = new Flight(name, origin, destination, id);
-			listOfFlights.add(flig);
-			createSeats(seat, id, row);
-			return flig;
-		
 
-		
+		Flight flig = new Flight(name, origin, destination, id);
+		listOfFlights.add(flig);
+		createSeats(seat, id, row);
+		return flig;
+
 	}
 
 	/*
@@ -115,17 +96,17 @@ public class SystemManager {
 	 */
 	public void createSeats(String airline, Integer flightID, Integer numberOfSeatsPerRow) {
 		// TODO implement
-		
+
 		String rows = "ABCDEF";
 		ArrayList<Seat> seats = new ArrayList<Seat>();
-		
+
 		Seat seat = new Seat();
 		for (int i = 1; i <= rows.length(); i++) {
-		    for (int j = 0; j < numberOfSeatsPerRow; j++) {
-			
-		    seat = new Seat(rows, numberOfSeatsPerRow);
-		    seats.add(seat);
-		    }
+			for (int j = 0; j < numberOfSeatsPerRow; j++) {
+
+				seat = new Seat(rows, numberOfSeatsPerRow);
+				seats.add(seat);
+			}
 		}
 
 	}
@@ -143,4 +124,25 @@ public class SystemManager {
 		return false;
 	}
 
+	public boolean provjeraDuplikataImenaAirporta(String name) {
+
+		for (int i = 0; i < listOfAirports.size(); i++) {
+
+			if (listOfAirports.get(i).getName().equals(name)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean provjeraDuplikataImenaAirline (String name) {
+		
+		for (int i = 0; i < listOfAirlines.size(); i++) {
+			
+			if (listOfAirlines.get(i).getName().equals(name)) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

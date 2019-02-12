@@ -4,6 +4,12 @@ public class Airline {
 	
 	private String name;
 
+	/*
+	 * def konstruktor
+	 */
+	public Airline () {
+		
+	}
 	
 	/**
 	 * @param name
@@ -34,6 +40,12 @@ public class Airline {
 		return "Airline [name=" + name + "]";
 	}
 	
-	
+	public boolean ispravnostDuzineImenaAirline (String name) {
+		
+		if (name.length() > 6) {
+			return false;
+		}
+		return true;
+	}
 
 }
